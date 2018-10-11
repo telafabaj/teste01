@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="saveData()" disabled>
+        <ion-label>
+          Save Outside Form
+        </ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="profileForm" novalidate padding>
+    <ion-item-group>
+
+      <ion-item-divider color="light">
+        <ion-label>PERSONAL DATA</ion-label>
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-label position="floating">Name:</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date Booking</ion-label>
+        <ion-datetime formControlName="dateBk" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" (ionChange)="test()"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-button (click)="saveData()" [disabled]="profileForm.invalid">SAVE INSIDE FORM</ion-button>
+      </ion-item>
+
+    </ion-item-group>
+    <pre>{{profileForm.value | json}}</pre>
+  </form>
+</ion-content>
